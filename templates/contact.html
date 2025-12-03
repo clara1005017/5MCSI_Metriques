@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <title>Contact</title>
 
-    <!-- Icônes Font Awesome -->
+    <!-- Icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -14,74 +14,64 @@
         background: #f5f6fa;
       }
 
-      /* ---------- HERO BANNER ---------- */
+      /* --- BANNIÈRE --- */
       .hero {
         width: 100%;
-        height: 320px;
+        height: 250px;
         background: linear-gradient(135deg, #4b79ff, #6ed2ff);
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
         text-align: center;
-        padding: 20px;
       }
 
       .hero h1 {
-        font-size: 42px;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
+        font-size: 40px;
+        margin: 0;
       }
 
-      .hero p {
-        font-size: 17px;
-        opacity: 0.9;
-      }
-
-      /* ---------- CONTACT CARD ---------- */
+      /* --- CARTE FORMULAIRE --- */
       .contact-card {
         background: white;
         width: 450px;
-        margin: -80px auto 0 auto;
+        margin: -70px auto 0 auto;
         padding: 40px;
         border-radius: 18px;
         box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.18);
-        animation: slideUp 0.7s ease;
-      }
-
-      @keyframes slideUp {
-        from { opacity: 0; transform: translateY(25px); }
-        to   { opacity: 1; transform: translateY(0); }
       }
 
       h2 {
-        margin-top: 0;
         text-align: center;
-        font-size: 26px;
+        margin-top: 0;
         color: #333;
       }
 
       label {
         font-weight: 600;
         font-size: 14px;
-        margin-top: 18px;
         display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
       }
 
+      /* --- STYLE DES INPUTS AVEC ICÔNE --- */
       .input-group {
         position: relative;
       }
 
       .input-group i {
         position: absolute;
-        top: 39px;
         left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
         color: #777;
+        font-size: 16px;
       }
 
       input, textarea {
         width: 100%;
-        padding: 12px 12px 12px 38px;
+        padding: 12px 12px 12px 40px; /* espace pour l’icône */
         border: 1px solid #dcdcdc;
         border-radius: 10px;
         font-size: 15px;
@@ -89,16 +79,18 @@
         transition: 0.25s;
       }
 
+      textarea {
+        height: 120px;
+        resize: none;
+        padding-top: 12px;
+      }
+
       input:focus, textarea:focus {
         border-color: #4b79ff;
         box-shadow: 0 0 0 3px rgba(75, 121, 255, 0.15);
       }
 
-      textarea {
-        height: 120px;
-        resize: none;
-      }
-
+      /* --- BOUTON --- */
       button {
         width: 100%;
         padding: 15px;
@@ -117,39 +109,25 @@
         transform: translateY(-2px);
       }
 
-      /* ---------- FOOTER ---------- */
-      .footer {
-        margin-top: 60px;
-        text-align: center;
-        font-size: 14px;
-        color: #777;
-        padding-bottom: 20px;
-      }
-
-      /* ---------- RESPONSIVE ---------- */
+      /* --- RESPONSIVE --- */
       @media (max-width: 500px) {
         .contact-card {
           width: 90%;
           padding: 30px;
         }
-        .hero h1 { font-size: 34px; }
       }
     </style>
   </head>
 
   <body>
 
-    <!-- BANNIÈRE DE HAUT DE PAGE -->
+    <!-- HERO -->
     <div class="hero">
-      <div>
-        <h1>Contactez-moi</h1>
-        <p>Une question ? Un message ? Je vous répondrai rapidement.</p>
-      </div>
+      <h1>Formulaire de contact</h1>
     </div>
 
     <!-- FORMULAIRE -->
     <div class="contact-card">
-      <h2>Formulaire de contact</h2>
 
       <label>Nom</label>
       <div class="input-group">
@@ -170,11 +148,6 @@
       </div>
 
       <button><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      © 2025 – Page de contact réalisée par Clara Cathebras
     </div>
 
   </body>
