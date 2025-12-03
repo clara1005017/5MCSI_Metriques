@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Graphique des commits</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f3f5ff;
+        padding: 40px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333;
+      }
+
+      #chart {
+        width: 900px;
+        height: 500px;
+        margin: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Histogramme des minutes de commits</h2>
+
+    <div id="chart"></div>
+
+    <script>
+      google.charts.load('current', { packages: ['corechart'] });
+      google.charts.setOnLoadCallback(loadData);
+
+      function loadData() {
+        fetch('/commits-data/')
+          .then(response => response.json())
+          .then(data => drawChart(data));
+      }
+
+      function drawChart(data) {
+        const dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('string', 'Commit');
+        dataTable.addColumn('number', 'Minute');
+
+        data.results.forEach((minute, index) => {
+          dataTable.addRow(["Commit " + (index + 1), minute]);
+        });
+
+        const options = {
+          title: 'Minutes des commits du projet (GitHub API)',
+          legend: { position: 'none' },
+          vAxis: { title: 'Minute (0–59)' },
+          hAxis: { title: 'Identifiant du commit' },
+          colors: ['#4b79ff'],
+          bar: { groupWidth: "70%" }
+        };
+
+        const chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+        chart.draw(dataTable, options);
+      }
+    </script>
+  </body>
+</html>
